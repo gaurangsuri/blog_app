@@ -10,13 +10,17 @@ app.use(cors());
 app.use(bodyParser.json());
 
 //DB connect
-mongoose.connect("mongodb+srv://gaurangsuri:eZDbTUOFIyihzYQX@cluster0.dtsbtnh.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://gaurangsuri:atHFvEjBobYehrOr@cluster0.dtsbtnh.mongodb.net/?retryWrites=true&w=majority");
 mongoose.connection.on("connected",()=>{
     console.log("DB Connected");
 })
 
 app.use("/auth",authRouter);
 app.use("/blog",blogRouter);
+
+app.get("",(req,res)=>{
+    return res.sendFile(__dirname+"/index.html");
+})
 
 app.listen(4000,()=>{
     console.log("server started on port 4000");
