@@ -7,4 +7,4 @@ authRouter.post("/register",register);
 authRouter.post("/login",commonLogin,login);
 authRouter.post("/reset",commonLogin,reset);
 
-module.exports = authRouter;
+module.exports = {authRouter};

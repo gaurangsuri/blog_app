@@ -19,8 +19,8 @@ userSchema.methods = {
         return CryptoJs.SHA256(planpassword,this.salt).toString();
     },
     isAuthenticated: function(password){
-        return this.securePassword(password) == this.ency_password;
-    }
+        return this.securePassword(password) === this.ency_password;
+    },
 };
 
 userSchema.virtual("password").set(function(planpassword) {

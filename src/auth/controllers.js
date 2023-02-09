@@ -1,6 +1,6 @@
 const {User} = require("./models");
 const jwt = require("jsonwebtoken");
-const Key = "ndweldw39d3hnliddd3b283x09kweslnde";
+const Key = "ndweldw39d3hnliddd3b283x09kweslnde"; //random
 
 
 const checkPass=(password)=>{
@@ -45,8 +45,7 @@ const commonLogin =async (req,res,next) =>{
     const { username, password } = req.body;
 
     if (!username || !password)
-        return res
-            .json({ msg: "username and password must be provided" });
+        return res.json({ msg: "username and password must be provided" });
 
     const newuser = await User.findOne({ username:username });
 

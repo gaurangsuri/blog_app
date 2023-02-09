@@ -10,14 +10,14 @@ const isAuthenticated = async (req, res, next) => {
   }
 
   try {
-    var user = jwt.verify(token, Key);
-    if (user && user._id) {
-      user = await User.findById(user._id);
+    var verify = jwt.verify(token, Key);
+    if (verify && verify._id) {
+      var user = await User.findById(verify._id);
       if (!user) {
         return res.json({ status: "Error", message: "InValid User " });
       }
       req.body.user_id = user._id;
-      req.user = user;
+      // req.user = user;
       next();
     } else {
       return res.json({ status: "Error", message: "InValid Token " });

@@ -1,11 +1,12 @@
 const express = require("express");
 const { isAuthenticated } = require("../helper/utils");
-const { createNewBlog, getBlogs } = require("./controllers");
+const { createNewBlog, editBlog, getBlogbyUser, getBlogbyId, deleteBlog } = require("./controllers");
 const blogRouter = express.Router();
 
-blogRouter
-  .route("/blog")
-  .post(isAuthenticated, createNewBlog)
-  .get(isAuthenticated, getBlogs);
+blogRouter.post("/blog",isAuthenticated,createNewBlog);
+blogRouter.put("/update",isAuthenticated,editBlog);
+blogRouter.get("/getbyuser",isAuthenticated,getBlogbyUser);
+blogRouter.get("/getbyid",isAuthenticated,getBlogbyId);
+blogRouter.delete("/deletebyid",isAuthenticated,deleteBlog);
 
-module.exports = blogRouter;
+module.exports = {blogRouter};
